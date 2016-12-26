@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>NewWeb-@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootswatch/spacelab/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/angular-ui-grid/ui-grid.min.css" rel="stylesheet" />
+    <link href="~/lib/nvd3/build/nv.d3.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    
+</head>
+<body>
+    @*Id menu odpowiada za navbar który sie wyswietla na wszystkich stronach*@
+    <div id="menu" class="navbar-static-top navbar">
+        <ul class="nav navbar-nav">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li ><a class="pull-right" asp-controller="Auth" asp-action="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                
+            }
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <li><a asp-controller="Auth" asp-action="Login">SignIn</a></li>
+                <li><a asp-controller="Auth" asp-action="Register">Register</a></li>
+            }
+        </ul>
+    </div>
+    @*od tego miejsca zaczyna się strona która jest renderowana*@
+    <div id="main">
+            @RenderBody()    
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    @*tu wczytywane sa scrypty JS potrzebne do angulara albo do walidacji jquery*@
+    @RenderSection("Scripts", false)
+</body>
+</html>

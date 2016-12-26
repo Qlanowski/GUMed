@@ -1,0 +1,67 @@
+﻿@model NewWeb.ViewModels.RegisterDoctorViewModel
+@{
+    ViewBag.Title = "Register";
+}
+@section Scripts{
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/js/app-register.js"></script>
+    <script src="~/js/registerController.js"></script>
+}
+
+<div ng-app="app-register">
+    
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" ng-controller="registerController as vm">
+            <h3>Welcome to register page</h3>
+            <div class="text-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+            <form novalidate name="RegisterForm" ng-submit="vm.registerDoctor()">
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input class="form-control" type="text" id="Name" name="Name" ng-model="vm.newDoctor.Name" required ng-minlength="2" />
+                    <span ng-show="RegisterForm.Name.$error.required" class="text-warning">Name is required.</span>
+                    <span ng-show="RegisterForm.Name.$error.minlength" class="text-warning">Name must be at least 2 characters.</span>
+
+                </div>
+                <div class="form-group">
+                    <label for="Surname">Surname</label>
+                    <input class="form-control" type="text" id="Surname" name="Surname" ng-model="vm.newDoctor.Surname" required ng-minlength="3" />
+                    <span ng-show="RegisterForm.Surname.$error.required" class="text-warning">Surname is required.</span>
+                    <span ng-show="RegisterForm.Surname.$error.minlength" class="text-warning">Surname must be at least 3 characters.</span>
+
+                </div>
+                <div class="form-group">
+                    <label for="UserName">Username</label>
+                    <input class="form-control" type="text" id="UserName" name="UserName" ng-model="vm.newDoctor.UserName" required ng-minlength="5" />
+                    <span ng-show="RegisterForm.UserName.$error.required" class="text-warning">Username is required.</span>
+                    <span ng-show="RegisterForm.UserName.$error.minlength" class="text-warning">Username must be at least 5 characters.</span>
+
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" id="Password" name="Password" ng-model="vm.newDoctor.Password" required ng-minlength="8" />
+                    <span ng-show="RegisterForm.Password.$error.required" class="text-warning">Password is required.</span>
+                    <span ng-show="RegisterForm.Password.$error.minlength" class="text-warning">Password must at least have 8 characters, number, capital letter and special character. </span>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" id="Email" name="Email" ng-model="vm.newDoctor.Email" required />
+                    <span ng-show="RegisterForm.Email.$error.required" class="text-warning">Email is required.</span>
+                </div>
+                <div class="form-group">
+                    <label for="PhoneNumber">Phone Number</label>
+                    <input class="form-control" type="tel" id="PhoneNumber" name="PhoneNumber" ng-model="vm.newDoctor.PhoneNumber" required ng-minlength="9" />
+                    <span ng-show="RegisterForm.PhoneNumber.$error.required" class="text-warning">Phone number is required.</span>
+                    <span ng-show="RegisterForm.PhoneNumber.$error.minlength" class="text-warning">Phone must contains at least 9 numbers</span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ward"></label>
+                    <input class="form-control" type="text" id="Ward" name="Ward" ng-model="vm.newDoctor.Ward" required />
+                    <span ng-show="RegisterForm.Ward.$error.required" class="text-warning">Ward is required.</span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-success" ng-disabled="RegisterForm.$invalid" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

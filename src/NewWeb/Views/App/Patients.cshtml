@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Patients Page";
+}
+@section Scripts{
+    
+    <script src="~/lib/underscore/underscore-min.js"></script>
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular-route/angular-route.min.js"></script>
+    <script src="~/js/app-patients.js"></script>
+    <script src="~/js/Controllers/patientsController.js"></script>
+    <script src="~/js/Directives/waitCursor.js"></script>
+    <script src="~/js/Directives/logout.js"></script>
+}
+@if (User.Identity.IsAuthenticated)
+{
+<div ng-app="app-patients"> @*Miejsce  którym zaczyna działać angular i wchodzi do app- patients.js skad bierze routy do viewsów*@
+   
+    <div ng-view></div> @*wczytuje view, który był podany w routcie*@ 
+     
+</div>
+}

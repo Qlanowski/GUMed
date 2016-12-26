@@ -1,0 +1,6 @@
+//œcie¿ka do serwera
+{
+   "ConnectionStrings": {
+     "MedContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=NewGumed;Trusted_Connection=true;MultipleActiveResultSets=true;"
+   }
+}
